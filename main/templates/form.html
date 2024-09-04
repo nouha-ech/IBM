@@ -18,8 +18,8 @@
         <input type="range" id="quality" name="quality" min="0" max="100"step="1" required>
         <span id="qualityPercentage">50%</span> <br>
 
-        <label for="delivery">Delivery Delay:</label>
-        <input type="range" id="delivery" name="delivery" min="0" max="100"  step="1" required>
+        <label for="deliveryDelay">Delivery Delay:</label>
+        <input type="range" id="deliveryDelay" name="deliveryDelay" min="0" max="100"  step="1" required>
         <span id="deliveryDelayPercentage">50%</span> <br>
 
         <label for="locality_preference">Locality :</label>
@@ -55,7 +55,7 @@
         const sliders = [
             { sliderId: 'price', valueId: 'pricePercentage' },
             { sliderId: 'quality', valueId: 'qualityPercentage' },
-            { sliderId: 'delivery', valueId: 'deliveryDelayPercentage' }
+            { sliderId: 'deliveryDelay', valueId: 'deliveryDelayPercentage' }
         ];
 
         // foreach loop
@@ -73,12 +73,12 @@
         document.getElementById('preference_form').onsubmit = function(event) {
             const priceValue = parseInt(document.getElementById('price').value);
             const qualityValue = parseInt(document.getElementById('quality').value);
-            const deliveryValue = parseInt(document.getElementById('delivery').value);
+            const deliveryDelayValue = parseInt(document.getElementById('deliveryDelay').value);
             const localityPreference = document.getElementById('locality_preference').value;
 
 
             // to make sure sum of percentages is 100
-            const total = priceValue + qualityValue + deliveryValue;
+            const total = priceValue + qualityValue + deliveryDelayValue;
             if (total !== 100) {
                 event.preventDefault(); // Prevent 
                 alert('Sum must be 100% !! ');
