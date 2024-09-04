@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from main.views import form_view  # import the form_view function
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('form/', form_view, name='form_view'),  # connect the URL to the form_view function
 ]

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Preferences</title>
+</head>
+<body>
+    <h1>Set Your Supplier Preferences</h1>
+    <form action="{% url 'set_preferences' %}" method="post">
+        {% csrf_token %}
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" min="0" max="100" required><br>
+
+        <label for="Quality">Quality:</label>
+        <input type="number" id="Quality" name="pQuality" min="0" max="100" required><br>
+
+        <label for="delivery">Delivery Delay:</label>
+        <input type="number" id="delivery" name="delivery" min="0" max="100" required><br>
+
+        <label for="locality_preference">Locality :</label>
+        <select id="locality_preference" name="locality_preference" required>
+            <option value="National">National</option>
+            <option value="International">International</option>
+        </select><br>
+
+        <input type="submit" value="Save Preferences">
+    </form>
+</body>
+</html>
