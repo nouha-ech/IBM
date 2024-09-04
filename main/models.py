@@ -8,10 +8,11 @@ class Category(models.Model):
     description = models.TextField(blank=True)
 
     def __str__(self):
+        # return the name of the category as string
         return self.name
 
     def categoryproviders(self):
-        """Return all providers associated with this category."""
+        # Return all providers of the category.
         return self.providers.all()
 
 class Provider(models.Model):
@@ -29,4 +30,5 @@ class Provider(models.Model):
     category = models.ForeignKey(Category, related_name='providers', on_delete=models.CASCADE)
 
     def __str__(self):
+        # return the name of the provider as string
         return self.name
