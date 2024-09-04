@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Preferences</title>
+    <title>Find Product</title>
 </head>
 <body>
-    <h1>Set Your Supplier Preferences</h1>
+    <h1>Find the best provider based on your preference</h1>
     <form action="{% url 'form_view' %}" method="post">
         {% csrf_token %}
         <label for="price">Price:</label>
@@ -25,7 +25,7 @@
             <option value="International">International</option>
         </select><br>
 
-        <input type="submit" value="Save Preferences">
+        <input type="submit" value="Search">
     </form>
 </body>
 </html>
