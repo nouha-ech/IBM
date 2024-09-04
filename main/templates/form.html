@@ -1,4 +1,4 @@
-
+<!-- setting preferences form -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +11,16 @@
     <form action="{% url 'form_view' %}" method="post">
         {% csrf_token %}
         <label for="price">Price:</label>
-        <input type="number" id="price" name="price" min="0" max="100" required><br>
+        <input type="range" id="price" name="price" min="0" max="100" step="1" required>
+        <span id="pricePercentage">50%</span> <br>
 
         <label for="Quality">Quality:</label>
-        <input type="number" id="Quality" name="Quality" min="0" max="100" required><br>
+        <input type="range" id="quality" name="Quality" min="0" max="100"step="1" required>
+        <span id="qualityPercentage">50%</span> <br>
 
         <label for="delivery">Delivery Delay:</label>
-        <input type="number" id="delivery" name="delivery" min="0" max="100" required><br>
+        <input type="range" id="delivery" name="delivery" min="0" max="100"  step="1" required>
+        <span id="deliveryDelayPercentage">50%</span> <br>
 
         <label for="locality_preference">Locality :</label>
         <select id="locality_preference" name="locality_preference" required>
@@ -27,5 +30,41 @@
 
         <input type="submit" value="Search">
     </form>
+
+
+    <!-- to display slider % for first 3 preferences -->
+
+    <script>
+
+
+        function displayPourcentage(sliderId, valueId) {
+            const slider = document.getElementById(sliderId);
+            const pourcentage = document.getElementById(valueId);
+
+             slider.oninput = function() {
+                pourcentage.textContent = this.value + '%';
+            }
+        }
+
+
+        // create array of the 3 sliders 
+
+        const sliders = [
+            { sliderId: 'price', valueId: 'pricePercentage' },
+            { sliderId: 'quality', valueId: 'qualityPercentage' },
+            { sliderId: 'delivery', valueId: 'deliveryDelayPercentage' }
+        ];
+
+        // foreach loop
+
+        sliders.forEach(
+
+            ({ sliderId, valueId}) =>
+            displayPourcentage(sliderId, valueId)
+
+        )
+
+    </script>
+
 </body>
 </html>
